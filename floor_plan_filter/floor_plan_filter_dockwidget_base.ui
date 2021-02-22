@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>338</width>
-    <height>102</height>
+    <height>80</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -35,7 +35,7 @@
    <set>Qt::AllDockWidgetAreas</set>
   </property>
   <property name="windowTitle">
-   <string/>
+   <string>Filter</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
    <widget class="QFrame" name="frame">
