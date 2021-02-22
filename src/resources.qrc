@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/floor_plan_filter" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
