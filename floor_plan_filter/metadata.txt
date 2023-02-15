@@ -6,9 +6,9 @@
 name=Floor plan filter
 qgisMinimumVersion=3.0
 description=This plugin applies a query filter to multiple map layers to visualize individual floor plans.
-version=0.1
+version=0.2
 author=Rob Braggaar
-email=rcbraggaar@gmail.com
+email=rob@geofacta.nl
 
 about=This plugin applies a query filter to multiple map layers to visualize their contents on individual floor plans.
 

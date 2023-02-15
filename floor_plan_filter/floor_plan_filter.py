@@ -8,8 +8,8 @@
                               -------------------
         begin                : 2021-02-19
         git sha              : $Format:%H$
-        copyright            : (C) 2021 by Rob Braggaar
-        email                : rcbraggaar@gmail.com
+        copyright            : (C) 2022 by Rob Braggaar
+        email                : rob@geofacta.nl
  ***************************************************************************/
 
 /***************************************************************************
@@ -223,9 +223,12 @@ class FloorPlanFilter:
 
     def apply_filters(self):
         for layer in self.layers:
-            QgsMessageLog.logMessage("Layer: " + layer.name(), level=0)
-            if '"bouwlaag" =' in layer.subsetString():
-                layer.setSubsetString('"bouwlaag" = ' + str(self.floorLevel))   
+            current_filter = layer.subsetString()
+            new_filter = (current_filter.split("=")[0] + "= '{}'").format(self.floorLevel)
+            #new_filter = current_filter.split("'")[0] + " " + str(self.floorLevel)
+            if 'bouwlaag =' in layer.subsetString():
+                QgsMessageLog.logMessage(new_filter, level=0)
+                layer.setSubsetString(new_filter)   
 
     def run(self):
         """Run method that loads and starts the plugin"""
@@ -245,13 +248,10 @@ class FloorPlanFilter:
             # connect to provide cleanup on closing of dockwidget
             self.dockwidget.closingPlugin.connect(self.onClosePlugin)
 
-            # show the dockwidget
-            # TODO: fix to allow choice of dock location
-            self.iface.addDockWidget(Qt.TopDockWidgetArea, self.dockwidget)
+            # show the dockwidget in the left dock widget area
+            self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
             self.dockwidget.show()
 
-
-            #
             # Fetch the currently loaded layers
             self.layers = QgsProject.instance().mapLayers().values()
             # self.layers = QgsProject.instance().layerTreeRoot().children()
@@ -262,8 +262,3 @@ class FloorPlanFilter:
             self.dockwidget.decreaseFloorLevelButton.clicked.connect(lambda: self.on_value_changed_pushbutton(-1))
             self.dockwidget.increaseFloorLevelButton.clicked.connect(lambda: self.on_value_changed_pushbutton(1))
             self.dockwidget.currentFloorLevelEdit.valueChanged.connect(self.on_value_changed_spinbox)  
-
-
-
-
-
