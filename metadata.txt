@@ -1,0 +1,21 @@
+[general]
+name=Floor Navigator
+qgisMinimumVersion=3.16
+description=Navigate multi-floor building plans using attribute filters and layer group visibility. Replaces per-floor PDF/CAD plan workflows.
+version=1.1.0
+author=Floor Navigator Contributors
+email=
+about=Floor Navigator provides two approaches for displaying floor-specific data in QGIS:
+    Attribute Filter: Dynamically applies a subset query on vector layers using a standardised 'floor_level' column.
+    Layer Group Filter: Toggles visibility of layers within registered layer tree groups using a _[FLOOR_ID] naming convention.
+    Floors can be grouped into combined Levels that activate together.
+    Developed with AI assistance (Claude, Anthropic).
+tracker=https://github.com/skoodleedoo/floor-plan-filter/issues
+repository=https://github.com/skoodleedoo/floor-plan-filter
+homepage=https://github.com/skoodleedoo/floor-plan-filter
+tags=floor plan,indoor mapping,building,facility management,asset management,floor level,filter
+category=Vector
+license=GPL-3.0
+experimental=False
+deprecated=False
+server=False
